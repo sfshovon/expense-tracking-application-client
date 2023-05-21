@@ -18,7 +18,7 @@ const Categories = ({ Controller, control, errors }) => {
     <>
       <Controller
         control={control}
-        name="selectOption"
+        name="categories"
         rules={{required: 'Please select at least one category'}} 
         render={({ field }) => (
           <Select
@@ -31,9 +31,9 @@ const Categories = ({ Controller, control, errors }) => {
           />
         )}
       />
-      {errors.selectOption && (
+      {errors.categories && (
         <span className="font-semibold text-red-600 flex justify-start items-center">
-          {errors.selectOption.message}
+          {errors.categories.message}
         </span>
       )}
     </> 

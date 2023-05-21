@@ -14,16 +14,32 @@ const ExpenseRecord = () => {
   const [formData, setFormData] = useState(null); 
 
   const onSubmit = data => {
-    console.log('Title:', data.title);
-    console.log('Amount:', data.amount);
-    console.log('Category:', data.selectOption.map(option => option.label).join(', '));
-    console.log('Date:', data.date);
-    console.log('Notes:', data.notes);
+    const title = data.title;
+    const amount = data.amount;
+    const categories = data.categories;
+    const date = data.date;
+    const notes = data.notes
+    const records = {title, amount, categories, date, notes};
+    fetch('http://localhost:5000/expenseRecord', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(records)
+    })
+    .then(res => res.json())
+    .then(data =>{
+        console.log('success', data);
+        alert('Record Added Successfully!!!');
+        handleClear();
+    })
     setFormData(data); 
   };
-  const handleCancel = () => {
+
+
+  const handleClear= () => {
     reset(); 
-    setValue('selectOption', null); 
+    setValue('categories', null); 
   };
 
   return (
@@ -39,7 +55,7 @@ const ExpenseRecord = () => {
             <InputField type="number" placeholder="Amount (Tk.)" register={register} registerType="amount" errors={errors} action="amount" />
           </div>
           <div className="mb-4">
-            <Categories Controller={Controller} control={control} setValue={setValue} errors={errors}/>
+            <Categories Controller={Controller} control={control} errors={errors}/>
           </div>
           <div className="mb-4">
             <DateTime Controller={Controller} control={control} errors={errors}/>
@@ -49,7 +65,7 @@ const ExpenseRecord = () => {
           </div>
           <div className="pt-4 flex items-center justify-between">
             <Button type="submit">Submit</Button>
-            <Button onClick={handleCancel}>Cancel</Button>
+            <Button onClick={handleClear}>Cancel</Button>
           </div>
         </form>
 
@@ -58,7 +74,7 @@ const ExpenseRecord = () => {
             <h2 className="py-2 text-lg font-semibold text-center">Form Data</h2>
             <p><strong>Title:</strong> {formData.title}</p>
             <p><strong>Amount:</strong> {formData.amount}</p>
-            <p><strong>Categories:</strong> {formData.selectOption.map(option => option.label).join(', ')}</p>
+            <p><strong>Categories:</strong> {formData.categories.map(option => option.label).join(', ')}</p>
             <p><strong>Date:</strong> {formData.date.toString()}</p>
             <p><strong>Notes:</strong> {formData.notes}</p>
           </div>
