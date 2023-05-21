@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const Categories = ({ setValue, selectedCategories, setSelectedCategories, categoryError, setCategoryError }) => {
+const Categories = ({ Controller, control, errors }) => {
   const categories = [
     { value: 'Commute', label: 'Commute' },
     { value: 'Eating Out', label: 'Eating Out' },
@@ -9,39 +9,33 @@ const Categories = ({ setValue, selectedCategories, setSelectedCategories, categ
     { value: 'Groceries', label: 'Groceries' },
     { value: 'Utilities', label: 'Utilities' }
   ];
-  const checkCategoryError = (selectedCategories) => {
-    if (selectedCategories.length === 0) {
-      setCategoryError(true);
-    } 
-    else {
-      setCategoryError(false);
-    }
-  };
-  const handleCategoryChange = (selectedOptions) => {
-    const selectedCategories = selectedOptions.map((option) => option.value);
-    const categoriesText = selectedCategories.join(", ");
-    setSelectedCategories(selectedOptions);
-    setValue('categories', categoriesText);   
-    checkCategoryError(selectedCategories);
-  };
   const options = categories.map((category) => ({
     value: category.value,
     label: category.label,
   }));
-
+  
   return (
     <>
-      <Select
-        isMulti
-        options={options}
-        onChange={handleCategoryChange}
-        onBlur={() => checkCategoryError(selectedCategories)}
-        placeholder="Choose Your Categories"
+      <Controller
+        control={control}
+        name="selectOption"
+        rules={{required: 'Please select at least one category'}} 
+        render={({ field }) => (
+          <Select
+            {...field}
+            isMulti
+            options={options}
+            onChange={(selectedOption) => field.onChange(selectedOption)}
+            onBlur={field.onBlur}
+            placeholder="Choose Your Categories"
+          />
+        )}
       />
-      { 
-        categoryError && 
-        <span className="font-semibold text-red-600 flex justify-start items-center">Choose at least one categeory</span>
-      }
+      {errors.selectOption && (
+        <span className="font-semibold text-red-600 flex justify-start items-center">
+          {errors.selectOption.message}
+        </span>
+      )}
     </> 
   );
 };
