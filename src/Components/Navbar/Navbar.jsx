@@ -49,8 +49,8 @@ const Navbar = () => {
                 </CustomLink>
               </li>
               <li className="md:ml-4">
-                <CustomLink to="/about" className="no-underline font-bold md:mx-5 md:p-0 md:text-lg p-2"> 
-                  <span className="text-lg hover:animation-ease-in-out hover:text-xl"> About </span> 
+                <CustomLink to="/expenseReport" className="no-underline font-bold md:mx-5 md:p-0 md:text-lg p-2"> 
+                  <span className="text-lg hover:animation-ease-in-out hover:text-xl"> Expense Report </span> 
                 </CustomLink>
               </li>
             </ul>
