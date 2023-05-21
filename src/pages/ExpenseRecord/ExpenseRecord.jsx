@@ -8,7 +8,7 @@ import InputField from '../../Components/InputField/InputField';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 
 const ExpenseRecord = () => {
-  const { register, setValue, handleSubmit, formState: { errors }, reset } = useForm();
+  const { register, setValue, handleSubmit, formState: { errors, isValid }, reset } = useForm();
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [categoryError, setCategoryError] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -19,7 +19,7 @@ const ExpenseRecord = () => {
     const hasCategoryError = selectedCategories.length === 0;
     setDateError(hasDateError);
     setCategoryError(hasCategoryError);
-    setIsFormValid(!hasDateError && !hasCategoryError && Object.keys(errors).length === 0);
+    setIsFormValid(!hasDateError && !hasCategoryError && isValid);
   };
   const handleCancel = () => {
     reset();

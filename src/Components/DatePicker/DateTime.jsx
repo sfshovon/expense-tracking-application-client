@@ -17,9 +17,10 @@ const DateTime = ({ selectedDate, handleDateChange, dateError, checkDateError })
         dateFormat="MMMM d, yyyy h:mm aa"
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
       />
-      {/* <div className="font-semibold text-red-600 flex justify-start items-center">
-        {dateError && <span>Please select a date and time</span>}
-      </div> */}
+      { 
+        dateError && 
+        <span className="font-semibold text-red-600 flex justify-start items-center">Select a date and time</span>
+      }
     </>
   );
 };

@@ -38,9 +38,10 @@ const Categories = ({ setValue, selectedCategories, setSelectedCategories, categ
         onBlur={() => checkCategoryError(selectedCategories)}
         placeholder="Choose Your Categories"
       />
-      {/* <div className="font-semibold text-red-600 flex justify-start items-center">
-        {categoryError && <span>Please choose at least one category</span>}
-      </div> */}
+      { 
+        categoryError && 
+        <span className="font-semibold text-red-600 flex justify-start items-center">Choose at least one categeory</span>
+      }
     </> 
   );
 };
