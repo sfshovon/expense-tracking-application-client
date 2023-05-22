@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const Categories = ({ Controller, control, errors }) => {
+const Categories = ({ Controller, control, errors, defaultValue }) => {
   const categories = [
     { value: 'Commute', label: 'Commute' },
     { value: 'Eating Out', label: 'Eating Out' },
@@ -13,13 +13,13 @@ const Categories = ({ Controller, control, errors }) => {
     value: category.value,
     label: category.label,
   }));
-  
+
   return (
     <>
       <Controller
         control={control}
         name="categories"
-        rules={{required: 'Please select at least one category'}} 
+        rules={{ required: 'Please select at least one category' }} 
         render={({ field }) => (
           <Select
             {...field}
@@ -27,15 +27,18 @@ const Categories = ({ Controller, control, errors }) => {
             options={options}
             onChange={(selectedOption) => field.onChange(selectedOption)}
             onBlur={field.onBlur}
+            defaultValue={defaultValue}
             placeholder="Choose Your Categories"
           />
         )}
       />
-      {errors.categories && (
-        <span className="font-semibold text-red-600 flex justify-start items-center">
-          {errors.categories.message}
-        </span>
-      )}
+      { 
+        errors.categories && (
+          <span className="font-semibold text-red-600 flex justify-start items-center">
+            {errors.categories.message}
+          </span>
+        )
+      }
     </> 
   );
 };

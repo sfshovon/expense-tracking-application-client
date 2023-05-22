@@ -1,12 +1,13 @@
 import React from 'react';
 
-const InputField = ({ type, placeholder, onChange, register, registerType, action, errors }) => {
+const InputField = ({ type, placeholder, defaultValue, onChange, register, registerType, action, errors }) => {
   return (
     <>
       <input
         className="shadow appearance-none border-t rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type={type} 
         placeholder={placeholder}
+        defaultValue={defaultValue}
         onChange={onChange}
         {...register(registerType, { 
           required: true,

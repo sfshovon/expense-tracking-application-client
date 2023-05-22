@@ -15,8 +15,6 @@ const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
           onChange={(date) => setFromDate(new Date(date))}
           placeholderText="From"
           dateFormat="MMMM d, yyyy"
-          minDate={fromDate} 
-          maxDate={new Date()}
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
         />
       </div>
@@ -31,7 +29,6 @@ const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
           placeholderText="To"
           dateFormat="MMMM d, yyyy"    
           minDate={fromDate} 
-          maxDate={new Date()}
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
         />
       </div>

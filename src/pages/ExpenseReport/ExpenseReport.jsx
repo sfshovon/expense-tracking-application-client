@@ -73,7 +73,8 @@ const ExpenseReport = () => {
           <button className="mt-6 btn btn-success p-4" onClick={handleReportsByRange}>Go</button>
         </div>
       </div>
-      <Accordion handleExpenseDelete={handleExpenseDelete} records={rangeRecords.sort((a, b) => {
+      <Accordion handleExpenseDelete={handleExpenseDelete} 
+        records={rangeRecords.sort((a, b) => {
           const dateA = new Date(a?.date);
           const dateB = new Date(b?.date);
           return dateA - dateB;

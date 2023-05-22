@@ -11,8 +11,8 @@ const Accordion = ({ records, handleExpenseDelete }) => {
   const uniqueDates = [...new Set(records.map((record) => record.date.split("T")[0]))];
 
   return (
-    <div className="w-1/2 mx-auto">
-      <div className="grid grid-cols-1 bg-gray-100 shadow-2xl rounded-xl p-8">
+    <div className="mt-1 w-1/2 mx-auto">
+      <div className="grid grid-cols-1 bg-gray-200 shadow-2xl rounded-xl p-8">
         {
           uniqueDates.map((date, index) => {
             const dailyRecords = records.filter((record) => record?.date?.split("T")[0] === date);

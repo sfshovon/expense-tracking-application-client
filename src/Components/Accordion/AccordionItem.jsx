@@ -24,7 +24,10 @@ const AccordionItem = ({ date, amount, dailyRecords, handleExpenseDelete, isActi
           )}
         </div>
       </div>
-      {isActive && <AccordionTable dailyRecords={dailyRecords} handleExpenseDelete={handleExpenseDelete} />}
+      { 
+        isActive && 
+        <AccordionTable dailyRecords={dailyRecords} handleExpenseDelete={handleExpenseDelete} />
+      }
     </div>
   );
 };

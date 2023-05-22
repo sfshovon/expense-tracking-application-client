@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Button/Button';
+import Modal from '../Modal/modal';
 
 const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editExpenseRecord, setEditExpenseRecord] = useState([]);
+ 
+  const handleModal = (id) => {
+    const editExpense = dailyRecords.filter(record => record?._id === id);
+    setIsModalOpen(!isModalOpen);
+    setEditExpenseRecord(editExpense);
+    // console.log(id)
+    // console.log(editExpense)
+  };
+  
 
   return (
     <div className="overflow-x-auto">
@@ -16,21 +28,24 @@ const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
           </tr>
         </thead>
         <tbody>
-        {
-          dailyRecords.map((record, index) => (
-            <tr key={index} className="font-semibold">
-              <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.categories.map(option => option.label).join(', ')}</td> 
-              <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.title}</td>
-              <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.amount}</td>
-              <td className="bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2 flex justify-center items-center gap-4">
-                <Button action="edit">Edit</Button>
-                <Button onClick={() => handleExpenseDelete(record._id)}action="delete">Delete</Button>
-              </td>
-            </tr>
-        ))
-        }
+          {
+            dailyRecords.map((record) => (
+              <tr key={record?._id} className="font-semibold">
+                <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">
+                  {record?.categories.map((option) => option.label).join(', ')}
+                </td>
+                <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.title}</td>
+                <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.amount}</td>
+                <td className="bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2 flex justify-center items-center gap-4">
+                  <Button onClick={() => handleModal(record._id)} action="edit">Edit</Button>
+                  <Button onClick={() => handleExpenseDelete(record._id)} action="delete">Delete</Button>
+                </td>
+              </tr>
+            ))
+          }
         </tbody>
       </table>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} editExpenseRecord={editExpenseRecord} />
     </div>
   );
 };

@@ -25,7 +25,6 @@ const Button = ({ type, action, onClick, children, isFormValid }) => {
       type={type}
       className={`${buttonClassName} font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
       onClick={onClick}
-      // disabled={isFormValid}
     >
       {children}
     </button>
