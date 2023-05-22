@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import { RiCloseCircleFill } from 'react-icons/ri';
+import useExpenseFunctions from '../../CustomHook/ExpenseFunctions';
 import Button from '../Button/Button';
 import Categories from '../Categories/Categories';
 import InputField from '../InputField/InputField';
 
 const Modal = ({ isModalOpen, setIsModalOpen, editExpenseRecord, handleUpdateExpense }) => {
-  const { register, setValue, handleSubmit, control, formState: { errors } } = useForm({
-    mode: 'onBlur', 
-  });
-  const onSubmit = (data) => {
+  const { register, setValue, handleSubmit, control, errors }  = useExpenseFunctions();
+  const onEditSubmit = (data) => {
     setIsModalOpen(false);
     handleUpdateExpense(editExpenseRecord[0]._id, data);
   };
@@ -35,7 +34,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, editExpenseRecord, handleUpdateExp
           {
             editExpenseRecord.map((record) => (
               <div key={record?._id}>
-                <form onSubmit={handleSubmit(onSubmit)} className="bg-sky-50 shadow-2xl rounded-xl p-4">
+                <form onSubmit={handleSubmit(onEditSubmit)} className="bg-sky-50 shadow-2xl rounded-xl p-4">
                   <div className="mb-4">
                     <InputField type="text" placeholder="Title" register={register} registerType="title" errors={errors} action="title" defaultValue={record?.title} />
                   </div>
