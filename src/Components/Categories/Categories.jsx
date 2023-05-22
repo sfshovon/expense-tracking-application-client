@@ -23,7 +23,6 @@ const Categories = ({ Controller, control, errors, defaultValue }) => {
         render={({ field }) => (
           <Select
             {...field}
-            isMulti
             options={options}
             onChange={(selectedOption) => field.onChange(selectedOption)}
             onBlur={field.onBlur}

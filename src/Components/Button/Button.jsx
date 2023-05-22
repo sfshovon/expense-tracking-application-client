@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ type, action, onClick, children, isFormValid }) => {
+const Button = ({ type, action, onClick, children }) => {
   let buttonClassName = "";
 
   switch (action) {

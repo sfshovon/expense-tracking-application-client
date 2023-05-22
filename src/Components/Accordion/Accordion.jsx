@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
 import AccordionItem from './AccordionItem';
 
-const Accordion = ({ records, handleExpenseDelete }) => {
+const Accordion = ({ records, handleExpenseDelete, handleUpdateExpense }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleToggle = (index) => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  const uniqueDates = [...new Set(records.map((record) => record.date.split("T")[0]))];
-
+  const uniqueDates = Array.from(
+    new Set(
+      records.map((record) =>
+        new Date(record.date).toLocaleDateString('en-US')
+      )
+    )
+  );
+  
   return (
-    <div className="mt-1 w-1/2 mx-auto">
-      <div className="grid grid-cols-1 bg-gray-200 shadow-2xl rounded-xl p-8">
+    <div className="mt-1 mx-auto">
+      <div className="grid grid-cols-1 bg-gray-200 shadow-3xl rounded-xl p-8">
         {
           uniqueDates.map((date, index) => {
-            const dailyRecords = records.filter((record) => record?.date?.split("T")[0] === date);
-            const totalDailyAmount = dailyRecords.reduce((dailyTotal, record) => dailyTotal + record?.amount, 0);
+            const dailyRecords = records.filter((record) => new Date(record.date).toLocaleDateString('en-US') === date);
+            const totalDailyAmount = dailyRecords.reduce((dailyTotal, record) => parseInt(dailyTotal) + parseInt(record?.amount), 0);
             return (
               <AccordionItem
                 key={index}
@@ -24,6 +30,7 @@ const Accordion = ({ records, handleExpenseDelete }) => {
                 amount={totalDailyAmount} 
                 dailyRecords={dailyRecords}
                 handleExpenseDelete={handleExpenseDelete}
+                handleUpdateExpense={handleUpdateExpense}
                 isActive={activeIndex === index}
                 onToggle={() => handleToggle(index)}
               />

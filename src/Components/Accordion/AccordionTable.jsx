@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import Modal from '../Modal/modal';
 
-const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
+const AccordionTable = ({ dailyRecords, handleExpenseDelete, handleUpdateExpense }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editExpenseRecord, setEditExpenseRecord] = useState([]);
  
@@ -10,11 +10,8 @@ const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
     const editExpense = dailyRecords.filter(record => record?._id === id);
     setIsModalOpen(!isModalOpen);
     setEditExpenseRecord(editExpense);
-    // console.log(id)
-    // console.log(editExpense)
   };
   
-
   return (
     <div className="overflow-x-auto">
       <h2 className="text-xl text-cyan-600 text-center font-bold my-4 tracking-widest">Expense List</h2>
@@ -32,7 +29,7 @@ const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
             dailyRecords.map((record) => (
               <tr key={record?._id} className="font-semibold">
                 <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">
-                  {record?.categories.map((option) => option.label).join(', ')}
+                  {record?.categories.label}
                 </td>
                 <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.title}</td>
                 <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.amount}</td>
@@ -45,7 +42,7 @@ const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
           }
         </tbody>
       </table>
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} editExpenseRecord={editExpenseRecord} />
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} editExpenseRecord={editExpenseRecord} handleUpdateExpense={handleUpdateExpense} />
     </div>
   );
 };

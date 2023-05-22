@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import useChangeScroll from '../../CustomHook/useChangeScroll';
 import logo from '../../assets/logo.png';
-import useChangeScroll from '../CustomHook/useChangeScroll';
 import CustomLink from '../CustomLInk/CustomLink';
 
 const Navbar = () => {

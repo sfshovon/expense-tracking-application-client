@@ -6,15 +6,15 @@ import Button from '../Button/Button';
 import Categories from '../Categories/Categories';
 import InputField from '../InputField/InputField';
 
-const Modal = ({ isModalOpen, setIsModalOpen, editExpenseRecord }) => {
+const Modal = ({ isModalOpen, setIsModalOpen, editExpenseRecord, handleUpdateExpense }) => {
   const { register, setValue, handleSubmit, control, formState: { errors } } = useForm({
     mode: 'onBlur', 
   });
   const onSubmit = (data) => {
-    console.log(data); 
+    setIsModalOpen(false);
+    handleUpdateExpense(editExpenseRecord[0]._id, data);
   };
   useEffect(() => {
-    console.log(editExpenseRecord)
     if (editExpenseRecord.length > 0) {
       const record = editExpenseRecord[0];
       setValue('title', record.title);
@@ -22,8 +22,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, editExpenseRecord }) => {
       setValue('categories', record.categories);
       setValue('notes', record.notes);
     }
-  }, [editExpenseRecord, setValue]);
-  console.log(editExpenseRecord)
+  }, [editExpenseRecord]);
   
   return (
     <div>
