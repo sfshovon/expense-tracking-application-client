@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AccordionItem from './AccordionItem';
 
-const Accordion = ({ records }) => {
+const Accordion = ({ records, handleExpenseDelete }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleToggle = (index) => {
@@ -23,6 +23,7 @@ const Accordion = ({ records }) => {
                 date={date}
                 amount={totalDailyAmount} 
                 dailyRecords={dailyRecords}
+                handleExpenseDelete={handleExpenseDelete}
                 isActive={activeIndex === index}
                 onToggle={() => handleToggle(index)}
               />

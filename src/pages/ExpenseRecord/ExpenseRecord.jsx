@@ -64,8 +64,8 @@ const ExpenseRecord = () => {
               <InputField type="text" placeholder="Notes" register={register} registerType="notes" errors={errors} action="notes" />
             </div>
             <div className="pt-4 flex items-center justify-between">
-              <Button type="submit">Submit</Button>
-              <Button onClick={handleClear}>Cancel</Button>
+              <Button action="submit" type="submit">Submit</Button>
+              <Button action="cancel" onClick={handleClear}>Cancel</Button>
             </div>
           </form>
          </div>

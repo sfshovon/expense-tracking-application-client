@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs';
 import AccordionTable from './AccordionTable';
 
-const AccordionItem = ({ date, amount, dailyRecords, isActive, onToggle }) => {
+const AccordionItem = ({ date, amount, dailyRecords, handleExpenseDelete, isActive, onToggle }) => {
   const dateTime = new Date(date);
   const day = dateTime.getDate();
   const month = dateTime.getMonth() + 1;
@@ -24,7 +24,7 @@ const AccordionItem = ({ date, amount, dailyRecords, isActive, onToggle }) => {
           )}
         </div>
       </div>
-      {isActive && <AccordionTable dailyRecords={dailyRecords} />}
+      {isActive && <AccordionTable dailyRecords={dailyRecords} handleExpenseDelete={handleExpenseDelete} />}
     </div>
   );
 };

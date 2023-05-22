@@ -1,6 +1,7 @@
 import React from 'react';
+import Button from '../Button/Button';
 
-const AccordionTable = ({ dailyRecords }) => {
+const AccordionTable = ({ dailyRecords, handleExpenseDelete }) => {
 
   return (
     <div className="overflow-x-auto">
@@ -22,8 +23,8 @@ const AccordionTable = ({ dailyRecords }) => {
               <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.title}</td>
               <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.amount}</td>
               <td className="bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2 flex justify-center items-center gap-4">
-                <button className="btn btn-sm btn-info mr-1">Edit</button>
-                <button className="btn btn-sm btn-error">Delete</button>
+                <Button action="edit">Edit</Button>
+                <Button onClick={() => handleExpenseDelete(record._id)}action="delete">Delete</Button>
               </td>
             </tr>
         ))

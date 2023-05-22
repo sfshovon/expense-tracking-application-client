@@ -46,6 +46,23 @@ const ExpenseReport = () => {
     setTotalExpense(totalDailyAmount);
   }
 
+  const handleExpenseDelete = id => {
+    const proceed = window.confirm("Are you sure you want to delete this record?");
+    if(proceed){
+      const url = `http://localhost:5000/expenseRecord/${id}`;
+      fetch(url, {
+        method: 'DELETE'
+      })
+      .then(res => res.json())
+      .then(data => {
+        const remainingRecords = records.filter(record => record._id !== id)
+        setRecords(remainingRecords);
+        setRangeRecords(remainingRecords); 
+      })
+      alert('Record Deleted Successfully!!!');
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 pt-12">
       <PageTitle title="Expense Report"/>
@@ -56,7 +73,7 @@ const ExpenseReport = () => {
           <button className="mt-6 btn btn-success p-4" onClick={handleReportsByRange}>Go</button>
         </div>
       </div>
-      <Accordion records={rangeRecords.sort((a, b) => {
+      <Accordion handleExpenseDelete={handleExpenseDelete} records={rangeRecords.sort((a, b) => {
           const dateA = new Date(a?.date);
           const dateB = new Date(b?.date);
           return dateA - dateB;
