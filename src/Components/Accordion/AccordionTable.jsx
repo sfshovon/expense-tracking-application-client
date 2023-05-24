@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
-import Modal from '../Modal/modal';
+import Modal from '../Modal/Modal';
 
 const AccordionTable = ({ dailyRecords, handleExpenseDelete, handleUpdateExpense }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
