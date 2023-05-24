@@ -18,10 +18,10 @@ const ReactPieChart = ({ pieData }) => {
         >
           Spent Per Category
         </text>
-        <text x={x} y={y} fill="black" textAnchor={x > cx ? "start" : "end"}  dominantBaseline="central" fontSize={14} fontWeight="bold"
+        <text x={x} y={y} fill="black" textAnchor={x > cx ? "start" : "end"}  dominantBaseline="central" fontSize={12} fontWeight="bold"
         >
-          <tspan x={x} dy={-10}>{title}</tspan>
-          <tspan x={x} dy={20}>{`$${amount}`}</tspan>
+          <tspan x={x} dy={-5}>{title}</tspan>
+          <tspan x={x} dy={12}>{`$${amount}`}</tspan>
         </text>
       </g>
     );

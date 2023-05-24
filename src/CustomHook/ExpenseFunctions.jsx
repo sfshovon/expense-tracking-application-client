@@ -12,41 +12,47 @@ const useExpenseFunctions = () => {
   const [fromDate,setFromDate] = useState(new Date());
   const [toDate,setToDate] = useState(new Date());
   const [totalExpense,setTotalExpense] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(true);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/expenseRecord');
+        setIsLoading(true); 
+        const response = await fetch('http://expense-tracking-application-server.vercel.app/expenseRecord');
         const data = await response.json();
         setRecords(data);
         setRangeRecords(data);
         getTotalExpense(data);
         createPieList(data);
+        setIsLoading(false);
       } 
       catch (error) {
         console.error('Error fetching data: ', error);
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  const onExpenseAddFormSubmit = async (data) => {
+  const onFormSubmit = async (data) => {
     const { title, amount, categories, date, notes } = data;
     const records = { title, amount, categories, date, notes };
     try {
-      const response = await fetch('http://localhost:5000/expenseRecord', {
+      const response = await fetch('http://expense-tracking-application-server.vercel.app/expenseRecord', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(records),
       });
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
       const responseData = await response.json();
       alert('Record Added Successfully!!!');
       handleClear();
-      setAddFormData(data);
-    } 
-    catch (error) {
+      setAddFormData(responseData);
+    } catch (error) {
       console.error('Error adding record:', error);
     }
   };
@@ -59,7 +65,7 @@ const useExpenseFunctions = () => {
   const handleExpenseDelete = id => {
     const proceed = window.confirm("Are you sure you want to delete this record?");
     if(proceed){
-      const url = `http://localhost:5000/expenseRecord/${id}`;
+      const url = `http://expense-tracking-application-server.vercel.app/expenseRecord/${id}`;
       fetch(url, {
         method: 'DELETE'
       })
@@ -76,7 +82,7 @@ const useExpenseFunctions = () => {
   const handleUpdateExpense = (id, data) => {
     const { title, amount, categories, notes } = data;
     const updatedRecord = { title, amount, categories, notes };
-    const url = `http://localhost:5000/expenseRecord/${id}`;
+    const url = `http://expense-tracking-application-server.vercel.app/expenseRecord/${id}`;
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -135,7 +141,7 @@ const useExpenseFunctions = () => {
   
   return { 
     register, setValue, handleSubmit, control, errors , reset,
-    addFormData, setAddFormData, records, setRecords, rangeRecords, setRangeRecords, pieData, setPieData, fromDate,setFromDate, toDate, setToDate, totalExpense, setTotalExpense, handleReportsByRange, getTotalExpense, onExpenseAddFormSubmit, handleExpenseDelete, handleUpdateExpense, handleClear, createPieList
+    addFormData, setAddFormData, records, setRecords, rangeRecords, setRangeRecords, pieData, setPieData, fromDate,setFromDate, toDate, setToDate, totalExpense, setTotalExpense, isLoading, setIsLoading, handleReportsByRange, getTotalExpense, onFormSubmit, handleExpenseDelete, handleUpdateExpense, handleClear, createPieList
   }
 };
 

@@ -9,7 +9,7 @@ const Navbar = () => {
   const navStyle = useChangeScroll();
   
   return (
-    <nav className={`fixed w-full top-0 shadow-lg ${navStyle ? "bg-gray-100" : "bg-gray-200"}`}>
+    <nav className={`fixed w-full top-0 z-50 shadow-lg ${navStyle ? "bg-gray-100" : "bg-gray-200"}`}>
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-3 md:block">
