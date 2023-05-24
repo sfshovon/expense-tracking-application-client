@@ -18,7 +18,7 @@ const useExpenseFunctions = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true); 
-        const response = await fetch('http://expense-tracking-application-server.vercel.app/expenseRecord');
+        const response = await fetch('https://expense-tracking-application-server.vercel.app/expenseRecord');
         const data = await response.json();
         setRecords(data);
         setRangeRecords(data);
@@ -38,7 +38,7 @@ const useExpenseFunctions = () => {
     const { title, amount, categories, date, notes } = data;
     const records = { title, amount, categories, date, notes };
     try {
-      const response = await fetch('http://expense-tracking-application-server.vercel.app/expenseRecord', {
+      const response = await fetch('https://expense-tracking-application-server.vercel.app/expenseRecord', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const useExpenseFunctions = () => {
   const handleExpenseDelete = id => {
     const proceed = window.confirm("Are you sure you want to delete this record?");
     if(proceed){
-      const url = `http://expense-tracking-application-server.vercel.app/expenseRecord/${id}`;
+      const url = `https://expense-tracking-application-server.vercel.app/expenseRecord/${id}`;
       fetch(url, {
         method: 'DELETE'
       })
@@ -82,7 +82,7 @@ const useExpenseFunctions = () => {
   const handleUpdateExpense = (id, data) => {
     const { title, amount, categories, notes } = data;
     const updatedRecord = { title, amount, categories, notes };
-    const url = `http://expense-tracking-application-server.vercel.app/expenseRecord/${id}`;
+    const url = `https://expense-tracking-application-server.vercel.app/expenseRecord/${id}`;
     fetch(url, {
       method: 'PUT',
       headers: {
