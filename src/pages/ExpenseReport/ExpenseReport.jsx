@@ -19,7 +19,7 @@ const ExpenseReport = () => {
           <Loader/>
         ) : (
           <div>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-start">
               <div className="w-1/2">
                 <div className="flex justify-center items-center gap-4">
                   <h2 className="mt-6 text-center text-dark font-semibold">Expenditure Report: </h2>
