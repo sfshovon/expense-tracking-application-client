@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router"
 import Navbar from "./Components/Navbar/Navbar"
-import ExpenseRecord from "./pages/ExpenseRecord/expenseRecord"
+import ExpenseRecord from "./pages/ExpenseRecord/ExpenseRecord"
 import ExpenseReport from "./pages/ExpenseReport/ExpenseReport"
 import Home from "./pages/Home/Home"
 import NotFound from "./pages/NotFound/NotFound"
