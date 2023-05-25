@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import Accordion from '../../Components/Accordion/Accordion';
 import Button from '../../Components/Button/Button';
 import FromToDate from '../../Components/FromToDate/FromToDate';
@@ -48,6 +49,7 @@ const ExpenseReport = () => {
           </div>
         )
       }
+    <ToastContainer/>
     </div>
   );
 }

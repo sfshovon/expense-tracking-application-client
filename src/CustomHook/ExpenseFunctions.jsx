@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useExpenseFunctions = () => {
   const { register, setValue, handleSubmit, control, formState: { errors }, reset } = useForm({
@@ -67,9 +69,16 @@ const useExpenseFunctions = () => {
         throw new Error(`Request failed with status ${response.status}`);
       }
       const responseData = await response.json();
-      alert('Record Added Successfully!!!');
       handleClear();
       setAddFormData(responseData);
+      toast("Record Has Been Added", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000, 
+        hideProgressBar: false, 
+        closeOnClick: true, 
+        pauseOnHover: true, 
+        draggable: true,
+      });
     } catch (error) {
       console.error('Error adding record:', error);
     }
@@ -92,6 +101,14 @@ const useExpenseFunctions = () => {
         const remainingRecords = records.filter(record => record._id !== id)
         setRecords(remainingRecords);
         setRangeRecords(remainingRecords); 
+        toast("Record Has Been Deleted", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 3000, 
+          hideProgressBar: false, 
+          closeOnClick: true, 
+          pauseOnHover: true, 
+          draggable: true,
+        });
       })
       alert('Record Deleted Successfully!!!');
     }
@@ -110,7 +127,6 @@ const useExpenseFunctions = () => {
     })
     .then(res => res.json())
     .then(() => {
-      alert('Report Updated Successfully!!!');
       const updatedRecords = records.map(record => {
         if (record._id === id) {
           return { ...record, ...updatedRecord };
@@ -121,6 +137,14 @@ const useExpenseFunctions = () => {
       setRangeRecords(updatedRecords);
       getTotalExpense(updatedRecords);
       createPieList(updatedRecords);
+      toast("Record Has Been Updated", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000, 
+        hideProgressBar: false, 
+        closeOnClick: true, 
+        pauseOnHover: true, 
+        draggable: true,
+      });
     });
   };
 
