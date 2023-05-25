@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import useChangeScroll from '../../CustomHook/useChangeScroll';
 import logo from '../../assets/logo.png';
 import CustomLink from '../CustomLInk/CustomLink';
@@ -23,13 +24,13 @@ const Navbar = () => {
             </div>     
             <div className="md:hidden">
               <button
-                className="p-2 text-dark rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-2 text-zinc-900 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setMenu(!menu)}
               >
                 {
                   menu
-                  ? (<i className="fa-solid fa-xmark text-dark h-6 w-6 flex justify-center items-center"></i>) 
-                  : (<i className="fa-solid fa-bars text-dark h-6 w-6 flex justify-center items-center"></i>)
+                  ?  <AiOutlineClose className="text-zinc-900 h-6 w-6 flex justify-center items-center" />
+                  : <AiOutlineMenu className="text-zinc-900 h-6 w-6 flex justify-center items-center" />
                 }
               </button>
             </div>

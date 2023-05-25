@@ -63,7 +63,7 @@ const ReactBarChart = () => {
             <BarChart data={forecastData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" tickFormatter={formatXAxisTick} fontSize={fontSize} fontWeight="bold" />
-              <YAxis fontSize={12} fontWeight="bold" />
+              <YAxis fontSize={fontSize} fontWeight="bold" />
               <Tooltip />
               <Bar dataKey="amount" label={renderCustomizedLabel}>
                 {forecastData.map((entry, index) => (
