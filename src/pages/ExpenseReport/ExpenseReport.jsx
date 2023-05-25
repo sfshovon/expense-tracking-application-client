@@ -13,7 +13,7 @@ const ExpenseReport = () => {
   const { rangeRecords, pieData, fromDate, setFromDate, toDate, setToDate, totalExpense, handleReportsByRange, handleExpenseDelete, handleUpdateExpense, isLoading } = useExpenseFunctions();
 
   return (
-    <div className="bg-base-200 pt-32 lg:px-20 pb-6 min-h-screen">
+    <div className="bg-base-200 pt-24 lg:px-20 pb-6 min-h-screen">
       <div >
         <PageTitle title="View Report" />
       </div>
@@ -22,7 +22,7 @@ const ExpenseReport = () => {
           <Loader/>
         ) : (
           <div>
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-6">
               <h2 className="mt-6 text-center text-dark font-semibold">Expenditure Report: </h2>
               <FromToDate fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
               <div className="mt-6">
@@ -31,7 +31,7 @@ const ExpenseReport = () => {
             </div>
             <div className="flex flex-col lg:flex-row justify-center items-start">
               <div className="order-2 lg:order-1 w-full lg:w-1/2">
-                <div className="">
+                <div className="px-6">
                   <Accordion
                     handleExpenseDelete={handleExpenseDelete}
                     handleUpdateExpense={handleUpdateExpense}
