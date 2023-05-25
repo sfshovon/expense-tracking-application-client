@@ -7,6 +7,7 @@ const useExpenseFunctions = () => {
   });
   const [addFormData, setAddFormData] = useState(null);
   const [records,setRecords] = useState([]);
+  const [forecastData,setForecastData] = useState([]);
   const [rangeRecords,setRangeRecords] = useState([]);
   const [pieData,setPieData] = useState([]);
   const [fromDate,setFromDate] = useState(new Date());
@@ -24,6 +25,23 @@ const useExpenseFunctions = () => {
         setRangeRecords(data);
         getTotalExpense(data);
         createPieList(data);
+        setIsLoading(false);
+      } 
+      catch (error) {
+        console.error('Error fetching data: ', error);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsLoading(true); 
+        const response = await fetch('https://expense-tracking-application-server.vercel.app/forecastRecord');
+        const data = await response.json();
+        setForecastData(data);
         setIsLoading(false);
       } 
       catch (error) {
@@ -141,7 +159,7 @@ const useExpenseFunctions = () => {
   
   return { 
     register, setValue, handleSubmit, control, errors , reset,
-    addFormData, setAddFormData, records, setRecords, rangeRecords, setRangeRecords, pieData, setPieData, fromDate,setFromDate, toDate, setToDate, totalExpense, setTotalExpense, isLoading, setIsLoading, handleReportsByRange, getTotalExpense, onFormSubmit, handleExpenseDelete, handleUpdateExpense, handleClear, createPieList
+    addFormData, setAddFormData, records, setRecords, forecastData, setForecastData,rangeRecords, setRangeRecords, pieData, setPieData, fromDate, setFromDate, toDate, setToDate, totalExpense, setTotalExpense, isLoading, setIsLoading, handleReportsByRange, getTotalExpense, onFormSubmit, handleExpenseDelete, handleUpdateExpense, handleClear, createPieList
   }
 };
 
