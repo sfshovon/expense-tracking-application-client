@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
   return (
-    <>
+    <div className='flex flex-col md:flex-row'>
       <div className="">
         <label htmlFor="fromDate" className="font-semibold">
           From:
@@ -32,8 +32,7 @@ const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
         />
       </div>
-      
-    </>
+    </div>
   );
 };
 
