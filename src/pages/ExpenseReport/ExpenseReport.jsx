@@ -7,7 +7,7 @@ import Loader from '../../Components/Loader/Loader';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 import ReactPieChart from '../../Components/ReactPieChart/ReactPieChart';
 import TotalExpense from '../../Components/TotalExpense/TotalExpense';
-import useExpenseFunctions from '../../CustomHook/ExpenseFunctions';
+import useExpenseFunctions from '../../CustomHook/useExpenseFunctions';
 
 const ExpenseReport = () => {
   const { rangeRecords, pieData, fromDate, setFromDate, toDate, setToDate, totalExpense, handleReportsByRange, handleExpenseDelete, handleUpdateExpense, isLoading } = useExpenseFunctions();

@@ -7,7 +7,7 @@ import DateTime from '../../Components/DatePicker/DateTime';
 import FormData from '../../Components/FormData/FormData';
 import InputField from '../../Components/InputField/InputField';
 import PageTitle from '../../Components/PageTitle/PageTitle';
-import useExpenseFunctions from '../../CustomHook/ExpenseFunctions';
+import useExpenseFunctions from '../../CustomHook/useExpenseFunctions';
 
 const ExpenseRecord = () => {
   const { register, handleSubmit, handleClear, control, errors , addFormData, onFormSubmit } = useExpenseFunctions();
@@ -15,7 +15,7 @@ const ExpenseRecord = () => {
   return (
     <div className="min-h-screen bg-base-200 pt-20">
       <PageTitle title="Add Record" />
-      <div className="flex justify-center items-center gap-10">
+      <div className="flex justify-center items-center px-6">
         <div className="mt-20 container max-w-md shadow-2xl hover:shadow-lg bg-gray-200 rounded-xl">
           <h1 className="py-2 text-xl font-semibold text-center text-dark">Add An Expense Record</h1>
           <form onSubmit={handleSubmit(onFormSubmit)} className="bg-gray-100 shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4">

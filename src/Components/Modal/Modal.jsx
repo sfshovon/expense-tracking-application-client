@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller } from 'react-hook-form';
 import { RiCloseCircleFill } from 'react-icons/ri';
-import useExpenseFunctions from '../../CustomHook/ExpenseFunctions';
+import useExpenseFunctions from '../../CustomHook/useExpenseFunctions';
 import Button from '../Button/Button';
 import Categories from '../Categories/Categories';
 import InputField from '../InputField/InputField';
