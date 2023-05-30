@@ -2,13 +2,15 @@ import React from 'react';
 
 const FormData = ({ formData }) => {
   return (
-    <div className="bg-gray-100 shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4">
-      <h2 className="py-2 text-lg font-semibold text-center">Form Data</h2>
-      <p><strong>Title:</strong> {formData?.title}</p>
-      <p><strong>Amount:</strong> {formData?.amount}</p>
-      <p><strong>Categories:</strong> {formData?.categories?.label}</p>
-      <p><strong>Date:</strong> {formData?.date.toString()}</p>
-      <p><strong>Notes:</strong> {formData?.notes}</p>
+    <div className="mt-12 bg-gray-600 shadow-2xl rounded-2xl">
+      <h2 className="mt-4 text-lg text-white text-center font-semibold rounded-xl">Form Data</h2>
+      <div className="my-4 px-8 bg-base-300">
+        <p className="mb-4"><strong>Title:</strong> {formData?.title}</p>
+        <p className="mb-4"><strong>Amount:</strong> {formData?.amount}</p>
+        <p className="mb-4"><strong>Categories:</strong> {formData?.categories?.label}</p>
+        <p className="mb-4"><strong>Date:</strong> {formData?.date.toString()}</p>
+        <p className="mb-14"><strong>Notes:</strong> {formData?.notes}</p>
+      </div>
     </div>
   );
 };

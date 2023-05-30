@@ -1,6 +1,7 @@
 import React from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller } from 'react-hook-form';
+import { ToastContainer } from 'react-toastify';
 import Button from '../../Components/Button/Button';
 import Categories from '../../Components/Categories/Categories';
 import DateTime from '../../Components/DatePicker/DateTime';
@@ -15,7 +16,7 @@ const ExpenseRecord = () => {
   return (
     <div className="min-h-screen bg-base-200 pt-20">
       <PageTitle title="Add Record" />
-      <div className="flex justify-center items-center px-6">
+      <div className="flex justify-center items-center gap-12 px-6">
         <div className="mt-20 container max-w-md shadow-2xl hover:shadow-lg bg-gray-200 rounded-xl">
           <h1 className="py-2 text-xl font-semibold text-center text-dark">Add An Expense Record</h1>
           <form onSubmit={handleSubmit(onFormSubmit)} className="bg-gray-100 shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4">
@@ -40,14 +41,12 @@ const ExpenseRecord = () => {
             </div>
           </form>
          </div>
-         <div className="bg-gray-200">
-          { 
-            addFormData && (
+          {
+            addFormData && 
               <FormData formData={addFormData} />
-            )
           }
-        </div>
       </div>
+    <ToastContainer/>
     </div>
   );
 };
