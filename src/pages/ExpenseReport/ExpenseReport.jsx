@@ -30,16 +30,13 @@ const ExpenseReport = () => {
               </div>
             </div>
             <div className="flex flex-col lg:flex-row justify-center items-start">
-              <div className="order-2 lg:order-1 w-full lg:w-1/2">
+              <div className="order-2 w-full lg:w-1/2">
                 <div className="px-6">
                   <Accordion
                     handleExpenseDelete={handleExpenseDelete}
                     handleUpdateExpense={handleUpdateExpense}
-                    records={rangeRecords.sort((a, b) => {
-                      const dateA = new Date(a?.date);
-                      const dateB = new Date(b?.date);
-                      return dateA - dateB;
-                    })}
+                    records={rangeRecords.sort((a, b) => 
+                      new Date(a?.date) - new Date(b?.date))}
                   />
                   <TotalExpense totalExpense={totalExpense} />
                 </div>

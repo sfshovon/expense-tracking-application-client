@@ -22,7 +22,7 @@ const ReactBarChart = () => {
     const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
     const formattedDate = date.toLocaleDateString('en-US', {
       month: 'numeric',
-      day: 'numeric',
+      day: 'numeric'
     });
     return `${dayName}, ${formattedDate}`;
   };
