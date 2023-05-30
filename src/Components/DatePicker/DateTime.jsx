@@ -13,7 +13,6 @@ const DateTime = ({ Controller, control, errors }) => {
         <DatePicker
           {...field}
           selected={field.value}
-          onChange={(date) => field.onChange(date)}
           placeholderText="Incurred on"
           showTimeSelect
           timeFormat="HH:mm"
