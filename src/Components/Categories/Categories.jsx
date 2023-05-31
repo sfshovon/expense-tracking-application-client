@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const Categories = ({ Controller, control, errors }) => {
+const Categories = ({ Controller, control, errors, defaultValue }) => {
   const categories = [
     { value: 'Commute', label: 'Commute' },
     { value: 'Eating Out', label: 'Eating Out' },
@@ -21,6 +21,7 @@ const Categories = ({ Controller, control, errors }) => {
             {...field}
             options={categories}
             placeholder="Choose Your Categories"
+            defaultValue={defaultValue}
           />
         )}
       />

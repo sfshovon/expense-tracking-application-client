@@ -16,7 +16,7 @@ const Accordion = ({ records, handleExpenseDelete, handleUpdateExpense }) => {
   };
 
   const uniqueDates = [...new Set(records.map((record) =>
-    new Date(record.date).toLocaleDateString('en-US')
+    new Date(record?.date).toLocaleDateString('en-US')
   ))];
 
   return (
@@ -24,8 +24,8 @@ const Accordion = ({ records, handleExpenseDelete, handleUpdateExpense }) => {
       <div className="bg-gray-200 shadow-3xl rounded-xl p-8">
         {
           uniqueDates.map((date, index) => {
-            const dailyRecords = records.filter((record) => new Date(record.date).toLocaleDateString('en-US') === date);
-            const totalDailyAmount = dailyRecords.reduce((dailyTotal, record) => parseInt(dailyTotal) + parseInt(record?.amount), 0);
+            const dailyRecords = records.filter((record) => new Date(record?.date).toLocaleDateString('en-US') === date);
+            const totalDailyAmount = dailyRecords.reduce((dailyTotal, record) => dailyTotal + parseInt(record?.amount), 0);
             return (
               <AccordionItem
                 key={index}

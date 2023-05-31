@@ -98,7 +98,7 @@ const useExpenseFunctions = () => {
       })
       .then(res => res.json())
       .then(data => {
-        const remainingRecords = records.filter(record => record._id !== id)
+        const remainingRecords = records.filter(record => record?._id !== id)
         setRecords(remainingRecords);
         setRangeRecords(remainingRecords); 
         toast("Record Has Been Deleted", {
@@ -128,7 +128,7 @@ const useExpenseFunctions = () => {
     .then(res => res.json())
     .then(() => {
       const updatedRecords = records.map(record => {
-        if (record._id === id) {
+        if (record?._id === id) {
           return { ...record, ...updatedRecord };
         }
         return record;
@@ -170,12 +170,12 @@ const useExpenseFunctions = () => {
   const createPieList = (recordList) => {
     let categoryList= []
     recordList?.map((record) => {
-      const existingCategory = categoryList.find((item) => item.title === record.categories.label);
+      const existingCategory = categoryList.find((item) => item?.title === record?.categories?.label);
       if (existingCategory) {
         existingCategory.amount += parseInt(record.amount);
       } 
       else {
-        categoryList.push({ title: record.categories.label, amount: parseInt(record.amount) })
+        categoryList.push({ title: record?.categories?.label, amount: parseInt(record?.amount) })
       }
     });
     setPieData(categoryList);
