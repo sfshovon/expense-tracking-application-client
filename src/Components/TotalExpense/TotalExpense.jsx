@@ -5,7 +5,7 @@ const TotalExpense = ({ totalExpense }) => {
     <div className="flex items-center justify-center">
       <div className="alert px-6 bg-sky-200 shadow-lg flex flex-row justify-between">
         <span className="text-xl font-bold">Total Expense</span>
-        <span className="text-xl font-bold text-red-600">{totalExpense}</span>
+        <span className="text-xl font-bold text-red-600">{totalExpense.toFixed(2)}</span>
       </div>
     </div>
   );

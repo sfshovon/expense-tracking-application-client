@@ -32,7 +32,7 @@ const AccordionTable = ({ dailyRecords, handleExpenseDelete, handleUpdateExpense
                   {record?.categories.label}
                 </td>
                 <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.title}</td>
-                <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.amount}</td>
+                <td className="text-center bg-gray-100 border border-gray-200 shadow-2xl px-6 py-2">{record?.amount.toFixed(2)}</td>
                 <td className="bg-gray-100 border border-gray-200 shadow-2xl px-6 py-4 flex justify-center items-center">
                   <div className="mr-2">
                     <Button onClick={() => handleModal(record?._id)} action="edit">Edit</Button>

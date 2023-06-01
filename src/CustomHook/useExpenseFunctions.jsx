@@ -164,7 +164,7 @@ const useExpenseFunctions = () => {
   }
 
   const getTotalExpense = (records) => {
-    const totalDailyAmount = records.reduce((subTotal, record) => subTotal + parseInt(record?.amount), 0);
+    const totalDailyAmount = records.reduce((subTotal, record) => subTotal + parseFloat(record?.amount), 0);
     setTotalExpense(totalDailyAmount);
   }
 
@@ -173,10 +173,10 @@ const useExpenseFunctions = () => {
     recordList?.map((record) => {
       const existingCategory = categoryList.find((item) => item?.title === record?.categories?.label);
       if (existingCategory) {
-        existingCategory.amount += parseInt(record.amount);
+        existingCategory.amount += parseFloat(record.amount);
       } 
       else {
-        categoryList.push({ title: record?.categories?.label, amount: parseInt(record?.amount) })
+        categoryList.push({ title: record?.categories?.label, amount: parseFloat(record?.amount) })
       }
     });
     setPieData(categoryList);

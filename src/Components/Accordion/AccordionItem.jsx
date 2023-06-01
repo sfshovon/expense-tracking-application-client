@@ -19,7 +19,7 @@ const AccordionItem = ({ date, amount, dailyRecords, handleExpenseDelete, handle
           Total Expenses of {formatDate(date)}
         </h3>
         <div className="flex justify-between items-center gap-4">
-          <h3 className="text-blue-600">{amount}</h3>
+          <h3 className="text-blue-600">{amount.toFixed(2)}</h3>
           {isActive ? (
             <BsFillCaretUpFill className="text-2xl" onClick={() => onToggle()} />
           ) : (

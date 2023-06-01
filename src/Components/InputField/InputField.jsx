@@ -19,7 +19,7 @@ const InputField = ({ type, placeholder, defaultValue, onChange, register, regis
             }
             : action === "amount" 
             ? {
-                value: /^[0-9]\d*$/,    
+                value: /^[0-9]+(\.[0-9]+)?$/,    
                 message: "Price can't be negative",
             }
             : action === "notes" 

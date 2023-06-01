@@ -25,7 +25,7 @@ const Accordion = ({ records, handleExpenseDelete, handleUpdateExpense }) => {
         {
           uniqueDates.map((date, index) => {
             const dailyRecords = records.filter((record) => new Date(record?.date).toLocaleDateString('en-US') === date);
-            const totalDailyAmount = dailyRecords.reduce((dailyTotal, record) => dailyTotal + parseInt(record?.amount), 0);
+            const totalDailyAmount = dailyRecords.reduce((dailyTotal, record) => dailyTotal + parseFloat(record?.amount), 0);
             return (
               <AccordionItem
                 key={index}

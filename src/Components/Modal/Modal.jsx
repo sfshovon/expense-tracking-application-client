@@ -39,7 +39,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, editExpenseRecord, handleUpdateExp
                     <InputField type="text" placeholder="Title" register={register} registerType="title" errors={errors} action="title" defaultValue={record?.title} />
                   </div>
                   <div className="mb-4">
-                    <InputField type="number" placeholder="Amount (Tk.)" register={register} registerType="amount" errors={errors} action="amount" defaultValue={record?.amount} />
+                    <InputField type="text" placeholder="Amount (Tk.)" register={register} registerType="amount" errors={errors} action="amount" defaultValue={record?.amount} />
                   </div>
                   <div className="mb-4">
                     <Categories Controller={Controller} control={control} errors={errors} defaultValue={record?.categories}/>
