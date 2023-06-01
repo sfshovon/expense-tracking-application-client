@@ -24,7 +24,7 @@ const ExpenseRecord = () => {
               <InputField type="text" placeholder="Title" register={register} registerType="title" errors={errors} action="title" />
             </div>
             <div className="mb-4">
-              <InputField type="number" placeholder="Amount (Tk.)" register={register} registerType="amount" errors={errors} action="amount" />
+              <InputField type="text" placeholder="Amount (Tk.)" register={register} registerType="amount" errors={errors} action="amount" />
             </div>
             <div className="mb-4">
               <Categories Controller={Controller} control={control} errors={errors}/>

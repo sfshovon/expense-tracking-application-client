@@ -101,6 +101,7 @@ const useExpenseFunctions = () => {
         const remainingRecords = records.filter(record => record?._id !== id)
         setRecords(remainingRecords);
         setRangeRecords(remainingRecords); 
+        getTotalExpense(remainingRecords);
         toast("Record Has Been Deleted", {
           position: toast.POSITION.TOP_RIGHT,
           autoClose: 3000, 

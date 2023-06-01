@@ -24,7 +24,7 @@ const ExpenseReport = () => {
           <div>
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-6">
               <h2 className="mt-6 text-center text-dark font-semibold">Expenditure Report: </h2>
-              <FromToDate fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+              <FromToDate fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} rangeRecords={rangeRecords}/>
               <div className="mt-6">
                 <Button action="submit" onClick={handleReportsByRange}>Go</Button>
               </div>

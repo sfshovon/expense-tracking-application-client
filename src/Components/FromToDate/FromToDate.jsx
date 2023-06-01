@@ -2,7 +2,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
+const FromToDate = ({ fromDate, toDate, setFromDate, setToDate, rangeRecords }) => {
   return (
     <div className='flex flex-col md:flex-row'>
       <div className="">
@@ -11,10 +11,12 @@ const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
         </label>
         <DatePicker
           id="fromDate"
-          selected={fromDate}
+          selected={new Date(rangeRecords[0]?.date)}
           onChange={(date) => setFromDate(new Date(date))}
           placeholderText="From"
           dateFormat="MMMM d, yyyy"
+          minDate={new Date(rangeRecords[0]?.date)}
+          maxDate={new Date(rangeRecords[rangeRecords.length-1].date)}
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
         />
       </div>
@@ -29,6 +31,7 @@ const FromToDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
           placeholderText="To"
           dateFormat="MMMM d, yyyy"    
           minDate={fromDate} 
+          maxDate={new Date(rangeRecords[rangeRecords.length-1].date)}
           className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
         />
       </div>
